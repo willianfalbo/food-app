@@ -4,6 +4,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 //shared configurations
 import { ROUTES } from './app.routes';
@@ -46,7 +47,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }) // to enable routes
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'pt-BR' } //change currency format and so on
+    { provide: LocationStrategy, useClass: HashLocationStrategy }, // to use "#" (hash) strategy after url domain. See https://codecraft.tv/courses/angular/routing/routing-strategies/
+    { provide: LOCALE_ID, useValue: 'pt-BR' }, // to change currency format and so on
   ],
   bootstrap: [AppComponent]
 })
