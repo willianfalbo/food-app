@@ -1,13 +1,14 @@
 //angular modules
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+// import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 //shared configurations
 import { ROUTES } from './app.routes';
+import { ApplicationErrorHandler } from './app.error-handler';
 import { SharedModule } from './shared/shared.module';
 
 //components
@@ -45,8 +46,9 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }) // to enable routes
   ],
   providers: [
-    // { provide: LocationStrategy, useClass: HashLocationStrategy }, // to use "#" (hash) strategy after url domain. See https://codecraft.tv/courses/angular/routing/routing-strategies/
     { provide: LOCALE_ID, useValue: 'pt-BR' }, // to change currency format and so on
+    { provide: ErrorHandler, useClass: ApplicationErrorHandler },
+    // { provide: LocationStrategy, useClass: HashLocationStrategy }, // to use "#" (hash) strategy after url domain. See https://codecraft.tv/courses/angular/routing/routing-strategies/
   ],
   bootstrap: [AppComponent]
 })
