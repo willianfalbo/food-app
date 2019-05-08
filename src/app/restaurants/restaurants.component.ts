@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
@@ -38,6 +38,7 @@ export class RestaurantsComponent implements OnInit {
 
   searchForm: FormGroup
   searchControl: FormControl
+  @ViewChild('iptSearch') iptSearch: ElementRef
 
   constructor(private restaurantsService: RestaurantsService, private fb: FormBuilder) { }
 
@@ -65,6 +66,7 @@ export class RestaurantsComponent implements OnInit {
 
   toogleSearch() {
     this.searchBarState = this.searchBarState == 'hidden' ? 'visible' : 'hidden'
+    this.iptSearch.nativeElement.focus()
   }
 
 }
