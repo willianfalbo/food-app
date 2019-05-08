@@ -45,7 +45,7 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }) // to enable routes
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy }, // to use "#" (hash) strategy after url domain. See https://codecraft.tv/courses/angular/routing/routing-strategies/
+    // { provide: LocationStrategy, useClass: HashLocationStrategy }, // to use "#" (hash) strategy after url domain. See https://codecraft.tv/courses/angular/routing/routing-strategies/
     { provide: LOCALE_ID, useValue: 'pt-BR' }, // to change currency format and so on
   ],
   bootstrap: [AppComponent]
