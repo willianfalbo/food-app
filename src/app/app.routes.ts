@@ -6,10 +6,13 @@ import { RestaurantDetailComponent } from "./restaurant-detail/restaurant-detail
 import { MenuComponent } from "./restaurant-detail/menu/menu.component";
 import { ReviewsComponent } from "./restaurant-detail/reviews/reviews.component";
 import { OrderSummaryComponent } from "./order-summary/order-summary.component";
+import { LoginComponent } from "./security/login/login.component";
+import { LoggedInGuard } from "./security/loggedin.guard";
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'restaurants', component: RestaurantsComponent },
+    { path: 'login/:to', component: LoginComponent },
+    { path: 'login', component: LoginComponent },
     {
         path: 'restaurants/:id', component: RestaurantDetailComponent,
         children: [
@@ -18,7 +21,10 @@ export const ROUTES: Routes = [
             { path: 'reviews', component: ReviewsComponent }
         ]
     },
-    { path: 'order', loadChildren: './order/order.module#OrderModule' }, // LazyLoading module
+    { path: 'restaurants', component: RestaurantsComponent },
+    { path: 'order', 
+        loadChildren: './order/order.module#OrderModule', // LazyLoading module 
+        canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] }, // to check if user is loggedin before going inside
     { path: 'order-summary', component: OrderSummaryComponent },
     { path: 'about', loadChildren: './about/about.module#AboutModule' }, // LazyLoading module
     // this one must be underneath the list. it's for not found pages

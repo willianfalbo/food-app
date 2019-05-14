@@ -1,12 +1,19 @@
 import { NgModule, ModuleWithProviders } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 
 //services
 import { ShoppingCartService } from "app/restaurant-detail/shopping-cart/shopping-cart.service";
 import { RestaurantsService } from "app/restaurants/restaurant.service";
 import { OrderService } from "app/order/order.service";
 import { NotificationService } from "./messages/notification.service";
+
+//security
+import { LoginService } from "app/security/login/login.service";
+import { LoggedInGuard } from "app/security/loggedin.guard";
+import { AuthInterceptor } from "app/security/auth.interceptor";
+import { LeaveOrderGuard } from "app/order/leave-order.guard";
 
 //components
 import { InputComponent } from "./input/input.component";
@@ -45,7 +52,11 @@ export class SharedModule {
                 ShoppingCartService,
                 RestaurantsService,
                 OrderService,
-                NotificationService
+                NotificationService,
+                LoginService,
+                LoggedInGuard,
+                LeaveOrderGuard,
+                {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
             ]
         }
     }

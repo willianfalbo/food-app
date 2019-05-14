@@ -10,6 +10,7 @@ export class InputComponent implements OnInit, AfterContentInit {
 
   @Input() label: string
   @Input() errorMessage: string
+  @Input() showTip: boolean = true
 
   input: any
 
@@ -28,11 +29,11 @@ export class InputComponent implements OnInit, AfterContentInit {
     }
   }
 
-  hasSuccess(): boolean{
+  hasSuccess(): boolean {
     return this.input.valid && (this.input.dirty || this.input.touched)
   }
 
-  hasError(): boolean{
+  hasError(): boolean {
     return this.input.invalid && (this.input.dirty || this.input.touched)
   }
 
