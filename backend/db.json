@@ -370,42 +370,5 @@
       "restaurantId": "tasty-treats"
     }
   ],
-  "orders": [
-    {
-      "name": "Juliana",
-      "email": "juliana@gmail.com",
-      "emailConfirmation": "juliana@gmail.com",
-      "address": "Rua xxx",
-      "number": "434",
-      "optionalAddress": "bl2 apto 43",
-      "paymentOption": "MEAL_VOUCHER",
-      "orderItems": [
-        {
-          "quantity": 1,
-          "menuId": "cup-cake"
-        },
-        {
-          "quantity": 1,
-          "menuId": "donut"
-        }
-      ],
-      "id": 1
-    },
-    {
-      "name": "testf",
-      "email": "test@test.com",
-      "emailConfirmation": "test@test.com",
-      "address": "testf",
-      "number": "12",
-      "optionalAddress": "test",
-      "paymentOption": "CREDIT_CARD",
-      "orderItems": [
-        {
-          "quantity": 1,
-          "menuId": "cup-cake"
-        }
-      ],
-      "id": 2
-    }
-  ]
+  "orders": [ ]
 }

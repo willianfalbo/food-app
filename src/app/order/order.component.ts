@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
+
+import { tap } from 'rxjs/operators';
 
 import { OrderService } from './order.service';
 
 import { RadioOption } from 'app/shared/radio/radio-option.model';
 import { CartItem } from 'app/restaurant-detail/shopping-cart/shopping-cart.model';
 import { Order, OrderItem } from './order.model';
-
-import 'rxjs/add/operator/do'
 
 @Component({
   selector: 'mt-order',
@@ -22,9 +22,7 @@ export class OrderComponent implements OnInit {
 
   orderForm: FormGroup
 
-  //fixed price
-  delivery: number = 8
-
+  delivery: number = 8 //fixed price
   orderId: string
 
   paymentOptions: RadioOption[] = [
@@ -36,33 +34,35 @@ export class OrderComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
-    private router: Router,
-    private formBuilder: FormBuilder) { }
+    private router: Router) { }
 
   ngOnInit() {
-    this.orderForm = this.formBuilder.group({
-      name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
-      email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
-      emailConfirmation: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
-      address: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
-      number: this.formBuilder.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
-      optionalAddress: this.formBuilder.control(''),
-      paymentOption: this.formBuilder.control('', [Validators.required]),
-    }, { validator: OrderComponent.equalsTo })
+    this.orderForm = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      email: new FormControl('', {
+        validators: [Validators.required, Validators.pattern(this.emailPattern)],
+        // updateOn: 'blur'
+      }),
+      emailConfirmation: new FormControl('', {
+        validators: [Validators.required, Validators.pattern(this.emailPattern)],
+        // updateOn: 'blur'
+      }),
+      address: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      number: new FormControl('', [Validators.required, Validators.pattern(this.numberPattern)]),
+      optionalAddress: new FormControl(''),
+      paymentOption: new FormControl('', [Validators.required]),
+    }, { validators: [OrderComponent.equalsTo], updateOn: 'change' })
   }
 
   static equalsTo(group: AbstractControl): { [key: string]: boolean } {
     const email = group.get('email')
     const emailConfirmation = group.get('emailConfirmation')
-
     if (!email || !emailConfirmation) {
       return undefined
     }
-
     if (email.value !== emailConfirmation.value) {
       return { emailsNotMatch: true }
     }
-
     return undefined
   }
 
@@ -94,9 +94,9 @@ export class OrderComponent implements OnInit {
     order.orderItems = this.cartItems()
       .map((item: CartItem) => new OrderItem(item.quantity, item.menuItem.id))
     this.orderService.checkOrder(order)
-      .do((orderId: string) => {
+      .pipe(tap((orderId: string) => {
         this.orderId = orderId
-      })
+      }))
       .subscribe((orderId: string) => {
         this.router.navigate(['/order-summary'])
         this.orderService.clear()

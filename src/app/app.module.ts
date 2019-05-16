@@ -4,7 +4,10 @@ import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-// import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt' // from angular 5 "pt" is default "pt-BR"
+
+registerLocaleData(localePt, 'pt')
 
 //shared configurations
 import { ROUTES } from './app.routes';
@@ -50,7 +53,7 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }) // to enable routes
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'pt-BR' }, // to change currency format and so on
+    { provide: LOCALE_ID, useValue: 'pt' }, // to change currency format and so on
     { provide: ErrorHandler, useClass: ApplicationErrorHandler },
     // { provide: LocationStrategy, useClass: HashLocationStrategy }, // to use "#" (hash) strategy after url domain. See https://codecraft.tv/courses/angular/routing/routing-strategies/
   ],

@@ -2,13 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
-import { Observable } from 'rxjs/Observable'
-import 'rxjs/add/operator/switchMap'
-import 'rxjs/add/operator/do'
-import 'rxjs/add/operator/debounceTime'
-import 'rxjs/add/operator/distinctUntilChanged'
-import 'rxjs/add/operator/catch'
-import 'rxjs/add/observable/from'
+import { Observable, from } from 'rxjs'
+import { switchMap, tap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators'
 
 import { Restaurant } from './restaurant/restaurant.model';
 import { RestaurantsService } from './restaurant.service';
@@ -51,14 +46,18 @@ export class RestaurantsComponent implements OnInit {
 
     //create an event for value changes
     this.searchControl.valueChanges
-      .debounceTime(500) //delays the values emitted within this time. If a new value arrives, the previous pending value is dropped.
-      .distinctUntilChanged() //ignore equal searchs after debounceTime
-      // .do(searchTerm => console.log(`q=${searchTerm}`))
-      .switchMap(searchTerm =>
-        this.restaurantsService
-          .restaurants(searchTerm)
-          .catch(error => Observable.from([])))
-      .subscribe(resp => this.restaurants = resp)
+      .pipe(
+        debounceTime(500), //delays the values emitted within this time. If a new value arrives, the previous pending value is dropped.
+        distinctUntilChanged(), //ignore equal searchs after debounceTime
+        // .tap(searchTerm => console.log(`q=${searchTerm}`))
+        switchMap(searchTerm =>
+          this.restaurantsService
+            .restaurants(searchTerm)
+            .pipe(
+              catchError(error => from([]))
+            )
+        )
+      ).subscribe(resp => this.restaurants = resp)
 
     this.restaurantsService.restaurants()
       .subscribe(resp => this.restaurants = resp)
