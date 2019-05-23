@@ -90,6 +90,10 @@ export class OrderComponent implements OnInit {
     return this.orderId !== undefined
   }
 
+  hasFormChanged() {
+    return this.orderForm.dirty || this.orderForm.touched
+  }
+
   checkOrder(order: Order) {
     order.orderItems = this.cartItems()
       .map((item: CartItem) => new OrderItem(item.quantity, item.menuItem.id))
