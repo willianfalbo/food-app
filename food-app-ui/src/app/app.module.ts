@@ -27,6 +27,7 @@ import { MenuItemComponent } from './restaurant-detail/menu-item/menu-item.compo
 import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
 import { LoginComponent } from './security/login/login.component';
 import { UserDetailComponent } from './header/user-detail/user-detail.component';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
     ReviewsComponent,
     LoginComponent,
     UserDetailComponent,
+    LoadingScreenComponent,
   ],
   imports: [
     BrowserModule,
