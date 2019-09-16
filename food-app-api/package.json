@@ -4,11 +4,11 @@
   "description": "food app api",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node dist/server.js",
     "all": "npm-run-all --print-label build:dev --parallel watch:** open:app-** ",
     "build:dev": "cd ./src && tsc",
     "watch:backend": "cd ./src && tsc -w",
-    "watch:json-server": "nodemon --watch ./src ./dist/server.js",
+    "watch:json-server": "nodemon --watch ./dist ./dist/server.js",
     "open:app-backend": "start http://localhost:3001"
   },
   "repository": {
@@ -25,8 +25,9 @@
     "@types/express": "^4.0.37",
     "@types/jsonwebtoken": "7.2.3",
     "@types/node": "8.9.4",
-    "jsonwebtoken": "7.4.1",
     "json-server": "^0.12.0",
+    "jsonwebtoken": "7.4.1",
+    "nodemon": "^1.19.2",
     "npm-run-all": "^4.1.5",
     "ts-node": "5.0.1",
     "tslint": "5.9.1",

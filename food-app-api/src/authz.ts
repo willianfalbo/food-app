@@ -1,34 +1,32 @@
 import { Request, Response } from "express";
-import * as jwt from 'jsonwebtoken'
+import * as jwt from "jsonwebtoken";
 
 import { apiConfig } from "./api-config";
 
 export const handleAuthorization = (req: Request, resp: Response, next) => {
-    const token = extractToken(req)
+    const token: string = extractToken(req);
     if (!token) {
-        resp.setHeader('WWW-Authenticate', 'Bearer token_type="JWT"') //optional line
-        resp.status(401).json({ message: 'Você precisa ser autenticado.' })
+        resp.setHeader("WWW-Authenticate", 'Bearer token_type="JWT"'); // optional line
+        resp.status(401).json({ message: "Você precisa ser autenticado." });
     } else {
         jwt.verify(token, apiConfig.secret, (error, decoded) => {
             if (decoded) {
-                next()
+                next();
             } else {
-                resp.status(403).json({ message: 'Não autorizado.' })
+                resp.status(403).json({ message: "Não autorizado." });
             }
-        })
-
+        });
     }
-}
+};
 
 function extractToken(req: Request): string {
-    let token = undefined
+    let token: string = undefined;
     if (req.headers && req.headers.authorization) {
-        //Authorization: Bearer ZZZ.ZZZ.ZZZ
-        const parts: string[] = req.headers.authorization.toString().split(' ')
-        if (parts.length === 2 && parts[0] === 'Bearer') {
-            token = parts[1]
+        // authorization: Bearer ZZZ.ZZZ.ZZZ
+        const parts: string[] = req.headers.authorization.toString().split(" ");
+        if (parts.length === 2 && parts[0] === "Bearer") {
+            token = parts[1];
         }
     }
-
-    return token
+    return token;
 }

@@ -370,5 +370,13 @@
       "restaurantId": "tasty-treats"
     }
   ],
-  "orders": [ ]
+  "users": [
+    {
+      "id": 1,
+      "email": "willian@gmail.com",
+      "name": "Willian",
+      "password": "password"
+    }
+  ],
+  "orders": []
 }
