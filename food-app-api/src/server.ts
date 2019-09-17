@@ -19,6 +19,12 @@ server.use(middlewares);
 // you can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
 
+server.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // middleware for login
 server.post("/login", handleAuthentication);
 // middlewares for orders
