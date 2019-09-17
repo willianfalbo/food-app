@@ -38,7 +38,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.orderForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', {
         validators: [Validators.required, Validators.pattern(this.emailPattern)],
         // updateOn: 'blur'

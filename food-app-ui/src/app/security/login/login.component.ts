@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { LoginService } from './login.service';
 import { NotificationService } from 'app/shared/messages/notification.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'mt-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private loginService: LoginService,
+    private userService: UserService,
     private notificationService: NotificationService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
@@ -25,21 +27,25 @@ export class LoginComponent implements OnInit {
       email: this.fb.control('', [Validators.required, Validators.email]),
       password: this.fb.control('', [Validators.required])
     })
-    this.navigateTo = this.activatedRoute.snapshot.params['to'] || btoa('/') //"btoa" is optional. It's a native javascript function used to encode url and keep it friendly when routing to login page
+    this.navigateTo = this.activatedRoute.snapshot.params['to'] || '/'
   }
 
   login() {
     this.loginService
       .login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe(user =>
-        //when success
+        // when success
         this.notificationService.notify(`Bem vindo, ${user.name}!`),
-        //when error
+        // when error
         response => this.notificationService.notify(response.error.message),
-        //when finished
+        // when finished
         () => {
-          this.router.navigate([ atob(this.navigateTo) ]) //"atob" is optional. It's a native javascript function used to decode url and keep it friendly when routing to login page
+          this.router.navigate([ this.navigateTo ])
         })
+  }
+
+  register() {
+    this.userService.handleRegister(this.navigateTo);
   }
 
 }

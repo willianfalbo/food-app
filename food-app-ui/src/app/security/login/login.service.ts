@@ -30,7 +30,7 @@ export class LoginService {
     }
 
     handleLogin(path: string = this.lastUrl) {
-        this.router.navigate(['/login', btoa(path)]) //"btoa" is optional. It's a native javascript function used to encode url and keep it friendly when routing to login page
+        this.router.navigate(['/login', path])
     }
 
     logout() {

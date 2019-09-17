@@ -8,16 +8,19 @@
 
   			<form [formGroup]="loginForm">
           <mt-input-container [showTip]="false">
-            <input type="text" formControlName="email" class="form-control" placeholder="Email">
+            <input type="text" formControlName="email" class="form-control" placeholder="E-mail">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </mt-input-container>
           <mt-input-container [showTip]="false">
-            <input type="password" formControlName="password" class="form-control" placeholder="Password">
+            <input type="password" formControlName="password" class="form-control" placeholder="Senha">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </mt-input-container>
   			  <div class="row">
+            <div class="col-xs col-xs-7">
+              <h4>Não tem uma conta? <a (click)="register()" style="cursor: pointer;">Cadastre-se</a></h4>
+            </div>
             <!-- /.col -->
-            <div class="col-xs-offset-8 col-xs-4">
+            <div class="col-xs-offset-1 col-xs-4">
               <button type="submit" (click)="login()" [disabled]="loginForm.invalid" class="btn btn-primary btn-block btn-flat">Entrar</button>
             </div>
             <!-- /.col -->
