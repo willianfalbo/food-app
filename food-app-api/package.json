@@ -4,8 +4,8 @@
   "description": "food app api",
   "main": "server.js",
   "scripts": {
-    "start": "node dist/server.js",
-    "all": "npm-run-all --print-label build:dev --parallel watch:** open:app-** ",
+    "start": "npm-run-all --print-label build:dev --parallel watch:** open:app-** ",
+    "start-server": "node dist/server.js",
     "build:dev": "cd ./src && tsc",
     "watch:backend": "cd ./src && tsc -w",
     "watch:json-server": "nodemon --watch ./dist ./dist/server.js",

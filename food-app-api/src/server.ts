@@ -30,6 +30,11 @@ server.post("/login", handleAuthentication);
 // middlewares for orders
 server.use("/orders", handleAuthorization);
 
+server.get("/users", (req, res, next) => {
+  // set delay
+  return setTimeout(() => { next(); }, 400);
+});
+
 server.post("/users", handleRegistration);
 
 // use default router

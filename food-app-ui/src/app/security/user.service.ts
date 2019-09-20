@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { filter, map, delay } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 import { FOODAPP_API } from 'app/app.api';
 import { User } from 'app/security/login/user.model';
@@ -30,8 +30,7 @@ export class UserService {
             .pipe(
                 map(users =>
                     users.find(u => u.email === email)
-                ),
-                delay(600)
+                )
             )
     }
 
