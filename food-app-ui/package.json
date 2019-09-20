@@ -9,7 +9,7 @@
     "http:prod": "npm run build:prod && cd dist && npm run open:http-prod && python -m http.server 8001",
     "build:dev": "ng build",
     "build:prod": "ng build --prod --extract-css=false",
-    "build:prod-bh": "ng build --prod --extract-css=false --base-href \"/food-app-ui/\"",
+    "build:prod-bh": "ng build --prod --extract-css=false --base-href \"/food-app/\"",
     "watch:frontend": "ng serve --watch",
     "open:app-frontend": "start http://localhost:4200",
     "open:http-dev": "start http://localhost:8000",
