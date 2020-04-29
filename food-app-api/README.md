@@ -27,4 +27,4 @@ The script `start` located in package.json file can be used to deploy applicatio
 
 ## Credits
 
-This application was develop based on Tarso Bessa course (Udemy)
+This application was develop based on Tarso Bessa' course
