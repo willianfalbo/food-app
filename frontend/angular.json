@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "food-app-ui": {
+    "frontend": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -56,18 +56,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "food-app-ui:build"
+            "browserTarget": "frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "food-app-ui:build:production"
+              "browserTarget": "frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "food-app-ui:build"
+            "browserTarget": "frontend:build"
           }
         },
         "test": {
@@ -108,7 +108,7 @@
         }
       }
     },
-    "food-app-ui-e2e": {
+    "frontend-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -117,7 +117,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "food-app-ui:serve"
+            "devServerTarget": "frontend:serve"
           }
         },
         "lint": {
@@ -132,7 +132,7 @@
       }
     }
   },
-  "defaultProject": "food-app-ui",
+  "defaultProject": "frontend",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "mt",

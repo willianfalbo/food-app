@@ -4,10 +4,6 @@ This is a simple Angular Web Application using Reactive Forms.
 
 ## Get Start Quickly
 
-### Clone this repository
-
-`git clone https://github.com/willianfalbo/food-app.git` and go the "food-app-ui" folder
-
 ### Install the dependencies
 
 `npm install`

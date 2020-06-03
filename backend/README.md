@@ -5,10 +5,6 @@ For more information: https://github.com/typicode/json-server
 
 ## Get Start Quickly
 
-### Clone this repository
-
-`git clone https://github.com/willianfalbo/food-app.git` and go to "food-app-api" folder
-
 ### Install the dependencies
 
 `npm install`

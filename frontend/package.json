@@ -1,5 +1,5 @@
 {
-  "name": "food-app-ui",
+  "name": "frontend",
   "version": "1.0.0",
   "license": "MIT",
   "angular-cli": {},
@@ -7,7 +7,7 @@
     "start": "npm-run-all --print-label build:dev --parallel watch:** open:app-** ",
     "http:dev": "npm run build:dev && cd dist && npm run open:http-dev && python -m http.server 8000",
     "http:prod": "npm run build:prod && cd dist && npm run open:http-prod && python -m http.server 8001",
-    "build:dev": "ng build",
+    "build:dev": "ng build --extract-css=false",
     "build:prod": "ng build --prod --extract-css=false",
     "build:prod-bh": "ng build --prod --extract-css=false --base-href \"/food-app/\"",
     "watch:frontend": "ng serve --watch",

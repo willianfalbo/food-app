@@ -8,7 +8,7 @@ export const handleAuthentication = (req: Request, resp: Response) => {
     const user: User = req.body;
     if (isValid(user)) {
         const dbUser: User = findUser(user.email);
-        const token: string = jwt.sign({ sub: dbUser.email, iss: "food-app-api" }, apiConfig.secret);
+        const token: string = jwt.sign({ sub: dbUser.email, iss: "food-app-backend" }, apiConfig.secret);
         resp.json({ name: dbUser.name, email: dbUser.email, accessToken: token });
     } else {
         resp.status(403).json({ message: "Dados inválidos." });
