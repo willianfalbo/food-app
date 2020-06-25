@@ -22,11 +22,15 @@ export class UserDetailComponent implements OnInit {
     return this.loginService.isLoggedIn()
   }
 
-  login(){
+  login() {
     this.loginService.handleLogin()
   }
 
-  logout(){
+  register() {
+    this.loginService.handleRegister()
+  }
+
+  logout() {
     this.loginService.logout()
   }
 

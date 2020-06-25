@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       .login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe(user =>
         // when success
-        this.notificationService.notify(`Bem vindo, ${user.name}!`),
+        this.notificationService.notify(`Welcome, ${user.name}!`),
         // when error
         response => this.notificationService.notify(response.error.message),
         // when finished

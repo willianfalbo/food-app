@@ -36,7 +36,7 @@ export const ROUTES: Routes = [
         canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] // to check if user is loggedin
     },
     { path: 'about', loadChildren: './about/about.module#AboutModule' }, // LazyLoading module
-    // this one must be underneath the list. it's for not found pages
+    // this one must be underneath the list
     { path: 'page-not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
     { path: '**', redirectTo: '/page-not-found' },
 ]

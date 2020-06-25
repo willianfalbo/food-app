@@ -18,7 +18,7 @@ export class ReviewsComponent implements OnInit {
 
   ngOnInit() {
     this.reviews = this.restaurantsService
-      .restaurantReviews(this.route.parent.snapshot.params['id']) //"route.parant" needed in order to access child route
+      .restaurantReviews(this.route.parent.snapshot.params['id']) // "route.parant" needed in order to access child route
   }
 
 }

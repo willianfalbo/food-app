@@ -11,31 +11,31 @@ import { User } from 'app/security/login/user.model';
 @Injectable()
 export class UserService {
 
-    lastUrl: string;
+  lastUrl: string;
 
-    constructor(private http: HttpClient, private router: Router) {
-        this.router.events
-            .pipe(filter(e => e instanceof NavigationEnd))
-            .subscribe((e: NavigationEnd) => this.lastUrl = e.url)
-    }
+  constructor(private http: HttpClient, private router: Router) {
+    this.router.events
+      .pipe(filter(e => e instanceof NavigationEnd))
+      .subscribe((e: NavigationEnd) => this.lastUrl = e.url)
+  }
 
-    register(name: string, email: string, password: string): Observable<User> {
-        return this.http.post<User>(`${FOODAPP_API}/users`, { name: name, email: email, password: password });
-    }
+  register(name: string, email: string, password: string): Observable<User> {
+    return this.http.post<User>(`${FOODAPP_API}/users`, { name: name, email: email, password: password });
+  }
 
-    userByEmail(email: string): Observable<User> {
-        let requestParameters: HttpParams = undefined;
-        requestParameters = new HttpParams().append('email', (email ? email : ''));
-        return this.http.get<User[]>(`${FOODAPP_API}/users`, { params: requestParameters })
-            .pipe(
-                map(users =>
-                    users.find(u => u.email === email)
-                )
-            )
-    }
+  userByEmail(email: string): Observable<User> {
+    let requestParameters: HttpParams = undefined;
+    requestParameters = new HttpParams().append('email', (email ? email : ''));
+    return this.http.get<User[]>(`${FOODAPP_API}/users`, { params: requestParameters })
+      .pipe(
+        map(users =>
+          users.find(u => u.email === email)
+        )
+      )
+  }
 
-    handleRegister(path: string = this.lastUrl) {
-        this.router.navigate(['/register', path])
-    }
+  handleRegister(path: string = this.lastUrl) {
+    this.router.navigate(['/register', path])
+  }
 
 }

@@ -1,18 +1,17 @@
-      <!-- INíCIO do CONTEÚDO -->
       <section class="content-header">
         <h1>
-          Todos os Restaurantes
+          All Restaurants
           <a (click)="toogleSearch()" class="search-link pull-right">
             <span *ngIf="iptSearch.value"><small>"{{iptSearch.value}}"</small></span> <i class="fa fa-search"></i>
           </a>
         </h1>
 
-        <!-- barra de busca -->
+        <!-- search bar -->
         <div class="row">
           <div class="col-xs-12 search-bar" [@toggleSearch]="searchBarState">
             <form [formGroup]="searchForm">
               <div class="form-group">
-                <input type="text" formControlName="searchControl" #iptSearch class="form-control" placeholder="O que você está procurando?">
+                <input type="text" formControlName="searchControl" #iptSearch class="form-control" placeholder="What are you looking for?">
               </div>
             </form>
           </div>
@@ -29,11 +28,9 @@
           </div>
           <div *ngIf="restaurants?.length === 0" class="col-xs-12">
             <p class="lead text-center">
-              Não encontrados nenhum item. =(
+              We couldn't find any restaurants for your search. =(
             </p>
           </div>
         </div>
 
       </section>
-
-      <!-- FIM  do CONTEÚDO -->

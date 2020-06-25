@@ -17,8 +17,8 @@
       "deliveryEstimate": "100m",
       "rating": 3.5,
       "imagePath": "assets/img/restaurants/burgerhouse.png",
-      "about": "40 anos se especializando em trash food.",
-      "hours": "Funciona todos os dias, de 10h às 22h"
+      "about": "Focuses on American-style burgers inspired by a certain Californian burger chain.",
+      "hours": "Open from 12am to 7pm. Everydays."
     },
     {
       "id": "coffee-corner",
@@ -33,7 +33,7 @@
     {
       "id": "green-food",
       "name": "Green Food",
-      "category": "Saudável",
+      "category": "Health Food",
       "deliveryEstimate": "75m",
       "rating": 4.1,
       "imagePath": "assets/img/restaurants/greenfood.png",
@@ -53,7 +53,7 @@
     {
       "id": "tasty-treats",
       "name": "Tasty Treats",
-      "category": "Doces",
+      "category": "Candy Store",
       "deliveryEstimate": "20m",
       "rating": 4.4,
       "imagePath": "assets/img/restaurants/tasty.png",
@@ -90,23 +90,23 @@
       "id": "burger",
       "imagePath": "assets/img/foods/burger.png",
       "name": "Classic Burger",
-      "description": "O clássico. Não tem como errar.",
-      "price": 18.5,
+      "description": "Beef, american cheese, white onion, pickles, ketchup & mustard.",
+      "price": 13.5,
       "restaurantId": "burger-house"
     },
     {
       "id": "fries",
       "imagePath": "assets/img/foods/fries.png",
-      "name": "Batatas Fritas",
-      "description": "Batatas fritas crocantes",
+      "name": "Fries",
+      "description": "Fries topped with cheese curds, gravy and maple aioli",
       "price": 5.5,
       "restaurantId": "burger-house"
     },
     {
-      "id": "coke.png",
+      "id": "coke",
       "imagePath": "assets/img/foods/coke.png",
-      "name": "Refrigerante",
-      "description": "O refri mais gelado da cidade.",
+      "name": "Soda",
+      "description": "Locally sourced delicious & refreshing organic syrups.",
       "price": 4.5,
       "restaurantId": "burger-house"
     },
@@ -237,24 +237,24 @@
       "restaurantId": "bread-bakery"
     },
     {
-      "name": "Daniela",
+      "name": "Dani",
       "date": "2017-01-23T18:25:43",
       "rating": 4,
-      "comments": "Sanduíche muito bom! Já pedi diversas vezes sempre bom!",
+      "comments": "It was a really good burger. Would have liked some more things on it.",
       "restaurantId": "burger-house"
     },
     {
-      "name": "Laila",
+      "name": "Tom",
       "date": "2017-02-02T18:25:43",
       "rating": 5,
-      "comments": "Melhor hambúrguer que já provei. Vai ser difícil voltar para mc e bk",
+      "comments": "Burger without words, cozy home, first-rate service.",
       "restaurantId": "burger-house"
     },
     {
-      "name": "Suzana",
+      "name": "Matthew",
       "date": "2016-12-12T18:25:43",
       "rating": 3.5,
-      "comments": "Meu sanduíche chegou frio e todo desmontado =\\",
+      "comments": "Had a vegetarian burger but the taste wasn't good.",
       "restaurantId": "burger-house"
     },
     {

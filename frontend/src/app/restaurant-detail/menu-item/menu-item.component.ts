@@ -18,7 +18,7 @@ import { MenuItem } from './menu-item.model';
 })
 export class MenuItemComponent implements OnInit {
 
-  menuItemState: string = 'ready'
+  menuItemState = 'ready'
 
   @Input() menuItem: MenuItem
   @Output() add = new EventEmitter()
@@ -28,8 +28,7 @@ export class MenuItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  //on click event
-  emitAddEvent(){
+  emitAddEvent() {
     this.add.emit(this.menuItem)
   }
 

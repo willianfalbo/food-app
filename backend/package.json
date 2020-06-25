@@ -4,12 +4,11 @@
   "description": "food app api",
   "main": "server.js",
   "scripts": {
-    "start": "npm-run-all --print-label build:dev --parallel watch:** open:app-** ",
-    "start-server": "node dist/server.js",
-    "build:dev": "cd ./src && tsc",
-    "watch:backend": "cd ./src && tsc -w",
-    "watch:json-server": "nodemon --watch ./dist ./dist/server.js",
-    "open:app-backend": "start http://localhost:3001"
+    "start:dev": "npm run build && node dist/server.js",
+    "start:watch": "npm-run-all --print-label build --parallel watch:** ",
+    "watch:nodemon": "nodemon --watch dist dist/server.js",
+    "watch:typescript": "cd ./src && tsc -w",
+    "build": "cd ./src && tsc"
   },
   "repository": {
     "type": "git",
@@ -32,5 +31,9 @@
     "ts-node": "5.0.1",
     "tslint": "5.9.1",
     "typescript": "2.7.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0"
   }
 }

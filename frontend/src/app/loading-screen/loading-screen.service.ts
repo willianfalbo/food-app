@@ -8,10 +8,10 @@ import { Subject } from 'rxjs';
 // https://nezhar.com/blog/create-a-loading-screen-for-angular-apps/
 export class LoadingScreenService {
 
-  constructor() { }
-
   private _loading = false;
   loadingStatus: Subject<boolean> = new Subject();
+
+  constructor() { }
 
   get loading(): boolean {
     return this._loading;

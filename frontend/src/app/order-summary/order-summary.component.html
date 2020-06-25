@@ -1,17 +1,15 @@
-      <!-- INICIO DO CONTEUDO -->
       <section class="content-header">
         </section>
-  
+
         <section class="content">
           <div class="jumbotron">
-            <h2>Pedido Conluído</h2>
-            <p>Seu pedido foi recebido pelo restaurante. Prepare a mesa que a comida está chegando!</p>
-            <p><b>Avalie</b> sua experiência:</p>
+            <h2>Order completed!</h2>
+            <p>The restaurant received your order. Be ready when the food arrives!</p>
+            <p>Let us know how was your experience:</p>
             <p><mt-rating (ratedEvent)="rate()"></mt-rating></p>
             <p *ngIf="rated">
-              Obrigado pela sua avaliação!
+              Thank you for the feedback!
             </p>
           </div>
-  
+
         </section>
-        <!-- FIM DO CONTEUDO -->

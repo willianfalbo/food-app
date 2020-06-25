@@ -1,4 +1,3 @@
-          <!-- INICIO DO CONTEUDO -->
           <div class="col-xs-12 col-sm-6" *ngFor="let review of reviews | async">
 
             <div class="box box-solid">
@@ -9,7 +8,7 @@
                   <img *ngIf="review.rating >= 3 && review.rating < 4" alt="User Image" class="img-circle" src="assets/img/reactions/soso.png">
                   <img *ngIf="review.rating >=4" alt="User Image" class="img-circle" src="assets/img/reactions/loved.png">
                   <span class="username">{{review.name}}</span>
-                  <span class="description">{{review.date | date:'dd/MM/yyyy'}}</span>
+                  <span class="description">{{review.date | date:'dd/MMM/yyyy'}}</span>
                 </div>
               </div>
 
@@ -19,4 +18,3 @@
             </div>
 
           </div>
-          <!--FIM DO CONTEUDO -->

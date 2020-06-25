@@ -1,26 +1,19 @@
-# Food App (Backend API)
+## Food App - Backend
 
-This is a simple Backend Fake API base on Json-Server.
-For more information: https://github.com/typicode/json-server
+The backend was built using Node.js and many other packages.
 
-## Get Start Quickly
+### Stack
 
-### Install the dependencies
+- Node.js & Typescript
+- RESTFul APIs & Express.js
+- Json-Server as full fake REST API for prototyping and mocking
+- JWT authentication & Password-Hashing with bcrypt
 
-`npm install`
+### Quick Start
 
-### Install the Json-Server
+1. Run `npm i` to install package dependencies.
 
-`npm install -g json-server`
+2. Run `cp .env.sample .env` to create the configuration file.
+    > **NOTE:** Please make the proper changes in ".env" file if needed.
 
-### Start the Server
-
-`npm run all`
-
-### FYI
-
-The script `start` located in package.json file can be used to deploy application in Node Azure Web App. 
-
-## Credits
-
-This application was develop based on Tarso Bessa' course
+4. Run `npm run start:dev` for starting the server.

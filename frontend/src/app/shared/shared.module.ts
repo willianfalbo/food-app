@@ -25,45 +25,45 @@ import { RatingComponent } from './rating/rating.component';
 import { SnackbarComponent } from 'app/shared/messages/snackbar/snackbar.component';
 
 @NgModule({
-    declarations: [
-        InputComponent,
-        RadioComponent,
-        RatingComponent,
-        SnackbarComponent
-    ],
-    imports: [
-        CommonModule,
-        FormsModule, // to enable "ngForms"
-        ReactiveFormsModule
-    ],
-    exports: [
-        InputComponent,
-        RadioComponent,
-        RatingComponent,
-        SnackbarComponent,
-        // by exporting these modules below, other modules won't need to import it again when using it
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule
-    ]
+  declarations: [
+    InputComponent,
+    RadioComponent,
+    RatingComponent,
+    SnackbarComponent
+  ],
+  imports: [
+    CommonModule,
+    FormsModule, // to enable "ngForms"
+    ReactiveFormsModule
+  ],
+  exports: [
+    InputComponent,
+    RadioComponent,
+    RatingComponent,
+    SnackbarComponent,
+    // by exporting these modules below, other modules won't need to import it again when using it
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class SharedModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: SharedModule,
-            providers: [
-                ShoppingCartService,
-                RestaurantsService,
-                OrderService,
-                NotificationService,
-                LoginService,
-                UserService,
-                LoggedInGuard,
-                LeaveOrderGuard,
-                { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-                LoadingScreenService,
-                { provide: HTTP_INTERCEPTORS, useClass: LoadingScreenInterceptor, multi: true },
-            ]
-        }
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        ShoppingCartService,
+        RestaurantsService,
+        OrderService,
+        NotificationService,
+        LoginService,
+        UserService,
+        LoggedInGuard,
+        LeaveOrderGuard,
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+        LoadingScreenService,
+        { provide: HTTP_INTERCEPTORS, useClass: LoadingScreenInterceptor, multi: true },
+      ]
     }
+  }
 }

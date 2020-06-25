@@ -1,13 +1,12 @@
-import { EventEmitter } from "@angular/core";
+import { EventEmitter } from '@angular/core';
 
 export class NotificationService {
+  notifier = new EventEmitter<any>();
 
-    constructor() { }
+  constructor() { }
 
-    notifier = new EventEmitter<any>()
-
-    notify(message: string) {
-        this.notifier.emit(message)
-    }
+  notify(message: string) {
+    this.notifier.emit(message)
+  }
 
 }

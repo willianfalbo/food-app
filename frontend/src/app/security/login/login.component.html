@@ -1,31 +1,29 @@
-      <!-- INÍCIO DO CONTEÚDO -->
       <section class="content login-content" style="margin: 10% auto">
   		  <div class="login-logo">
-  			     <b>FOOD APP</b> | Login
+  			     <b>FOOD APP</b> | Sign In
   		  </div>
   		  <div class="col-xs-12 col-sm-offset-3 col-sm-6 login-box-body">
-  			<p class="login-box-msg">Por favor, efetue o login para continuar</p>
+  			<p class="login-box-msg">Please, sign in to continue.</p>
 
   			<form [formGroup]="loginForm">
           <mt-input-container [showTip]="false">
-            <input type="text" formControlName="email" class="form-control" placeholder="E-mail">
+            <input type="text" formControlName="email" class="form-control" placeholder="Email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </mt-input-container>
           <mt-input-container [showTip]="false">
-            <input type="password" formControlName="password" class="form-control" placeholder="Senha">
+            <input type="password" formControlName="password" class="form-control" placeholder="Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </mt-input-container>
   			  <div class="row">
             <div class="col-xs col-xs-7">
-              <h4>Não tem uma conta? <a (click)="register()" style="cursor: pointer;">Cadastre-se</a></h4>
+              <h4>Don't have an account? <a (click)="register()" style="cursor: pointer;">Register now!</a></h4>
             </div>
             <!-- /.col -->
             <div class="col-xs-offset-1 col-xs-4">
-              <button type="submit" (click)="login()" [disabled]="loginForm.invalid" class="btn btn-primary btn-block btn-flat">Entrar</button>
+              <button type="submit" (click)="login()" [disabled]="loginForm.invalid" class="btn btn-primary btn-block btn-flat">Sign in</button>
             </div>
             <!-- /.col -->
   			  </div>
   			</form>
   		  </div>
 		  </section>
-      <!-- FIM DO CONTEÚDO -->

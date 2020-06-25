@@ -1,19 +1,39 @@
-# Food App
+## Food App
 
-This is a simple Food Application.
+Simplified version of an online food delivery application. It was created for demonstration purpose only.
 
-## Frontend UI
+### Features
 
-The frontend UI was developed using Angular (>=4) using Reactive Forms.
-For further information, please check the [frontend project](frontend/README.md).
+- Authentication: Sign-up, login and logout.
+- Restaurants: Restaurant listing, restaurant details and so on.
+- Cart: Add different foods to cart and checkout items.
+- Orders: Create orders, enter payment options and review experience.
 
-## Backend API
+### Quick Preview
 
-The backend API was developed using Json-Server fake API.
-For further information, please check the [backend project](backend/README.md).
+<kbd>
+    <img src="./quick-preview.gif">
+</kbd>
 
-## Get Start Quickly
+### Quick Start
 
-### Install Node.js
+- Go to the [backend](./backend) folder and follow the README file instructions.
 
-Please download and install Node.js https://nodejs.org/en/
+- Go to the [frontend](./frontend) folder and follow the README file instructions.
+
+### Stack
+
+- Backend
+    - Node.js & Typescript
+    - RESTFul APIs & Express.js
+    - Json-Server as full fake REST API for prototyping and mocking
+    - JWT authentication & Password-Hashing with bcrypt
+
+- Frontend
+    - Angular 6+ & Typescript
+    - Reactive Forms & RxJS
+    - Bootstrap & Font Awesome
+
+### Credits
+
+This app was created based on [Tarso Bessa](https://www.linkedin.com/in/tarsobessa/)'s course. [Building Web Applications with Angular (4/5/6)](https://www.cod3r.com.br/).

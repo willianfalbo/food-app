@@ -1,16 +1,16 @@
 <div class="table-responsive">
     <table class="table">
       <tbody><tr>
-        <th style="width:50%">Itens:</th>
-        <td class="text-right">{{itemsValue | currency: 'BRL': 'symbol'}}</td>
+        <th style="width:50%">Items:</th>
+        <td class="text-right">{{itemsValue | currency: 'USD': 'symbol'}}</td>
       </tr>
       <tr>
-        <th>Frete:</th>
-        <td class="text-right">{{delivery | currency: 'BRL': 'symbol'}}</td>
+        <th>Delivery Cost:</th>
+        <td class="text-right">{{delivery | currency: 'USD': 'symbol'}}</td>
       </tr>
       <tr>
         <th>Total:</th>
-        <td class="text-right">{{total() | currency: 'BRL': 'symbol'}}</td>
+        <td class="text-right">{{total() | currency: 'USD': 'symbol'}}</td>
       </tr>
     </tbody></table>
   </div>

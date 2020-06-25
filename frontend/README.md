@@ -1,19 +1,26 @@
-# Food App (Angular Web Application)
+## Food App - Frontend
 
-This is a simple Angular Web Application using Reactive Forms.
+The frontend was built using Angular (4/5/6) & Reactive Forms.
 
-## Get Start Quickly
+### Stack
 
-### Install the dependencies
+- Angular 6+ & Typescript
+- Reactive Forms & RxJS
+- Bootstrap & Font Awesome
 
-`npm install`
+### Quick Start
 
-### Start the Web Application
+1. Run `npm i` to install package dependencies.
 
-NOTE: Please ensure the Backend API application has been started.
-`npm run start`
+2. Go to the folder "src/environments" and change the configuration files if needed.
+
+3. Run `npm run start:dev` for starting the server.
+
+### Build
+
+Run `npm run build:prod` for building the project as production mode.
 
 ## Credits
 
-- All the images used in this application belong to https://www.freepik.com/
-- The application layout belongs to https://adminlte.io/
+- All images in this app belong to [Freepik](https://www.freepik.com/).
+- The app template belongs to [AdminLTE](https://adminlte.io/).

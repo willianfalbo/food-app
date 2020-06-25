@@ -16,20 +16,20 @@ import { Order, OrderItem } from './order.model';
 })
 export class OrderComponent implements OnInit {
 
-  //regex
+  // regex
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
   numberPattern = /^[0-9]*$/
 
-  orderForm: FormGroup
+  orderForm: FormGroup;
 
-  delivery: number = 8 //fixed price
-  orderId: string
+  delivery = 8; // fixed price
+  orderId: string;
 
   paymentOptions: RadioOption[] = [
-    { label: "Dinheiro", value: "MONEY" },
-    { label: "Cartão de Débito", value: "DEBIT_CARD" },
-    { label: "Cartão de Crédito", value: "CREDIT_CARD" },
-    { label: "Cartão de Refeição", value: "MEAL_VOUCHER" }
+    { label: 'Cash Money', value: 'MONEY' },
+    { label: 'Debit Card', value: 'DEBIT_CARD' },
+    { label: 'Credit Card', value: 'CREDIT_CARD' },
+    // { label: 'Meal Card', value: 'MEAL_VOUCHER' },
   ]
 
   constructor(
@@ -37,24 +37,28 @@ export class OrderComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.orderForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      email: new FormControl('', {
-        validators: [Validators.required, Validators.pattern(this.emailPattern)],
-        // updateOn: 'blur'
-      }),
-      emailConfirmation: new FormControl('', {
-        validators: [Validators.required, Validators.pattern(this.emailPattern)],
-        // updateOn: 'blur'
-      }),
-      address: new FormControl('', [Validators.required, Validators.minLength(5)]),
-      number: new FormControl('', [Validators.required, Validators.pattern(this.numberPattern)]),
-      optionalAddress: new FormControl(''),
-      paymentOption: new FormControl('', [Validators.required]),
-    }, { validators: [OrderComponent.equalsTo], updateOn: 'change' })
+    this.orderForm = new FormGroup(
+      {
+        name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+        email: new FormControl('', {
+          validators: [Validators.required, Validators.pattern(this.emailPattern)],
+          // updateOn: 'blur'
+        }),
+        emailConfirmation: new FormControl('', {
+          validators: [Validators.required, Validators.pattern(this.emailPattern)],
+          // updateOn: 'blur'
+        }),
+        address: new FormControl('', [Validators.required, Validators.minLength(5)]),
+        number: new FormControl('', [Validators.required, Validators.pattern(this.numberPattern)]),
+        optionalAddress: new FormControl(''),
+        paymentOption: new FormControl('', [Validators.required]),
+      },
+      {
+        validators: [this.equalEmails], updateOn: 'change'
+      });
   }
 
-  static equalsTo(group: AbstractControl): { [key: string]: boolean } {
+  equalEmails(group: AbstractControl): { [key: string]: boolean } {
     const email = group.get('email')
     const emailConfirmation = group.get('emailConfirmation')
     if (!email || !emailConfirmation) {
@@ -106,5 +110,4 @@ export class OrderComponent implements OnInit {
         this.orderService.clear()
       })
   }
-
 }

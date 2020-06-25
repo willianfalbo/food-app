@@ -31,18 +31,18 @@ export class RadioComponent implements OnInit, ControlValueAccessor {
     this.onChange(this.value)
   }
 
-  //method implemented by the interface
+  // method implemented by the interface
   writeValue(obj: any): void {
     this.value = obj
   }
-  //method implemented by the interface
+  // method implemented by the interface
   registerOnChange(fn: any): void {
     this.onChange = fn
   }
-  //method implemented by the interface
+  // method implemented by the interface
   registerOnTouched(fn: any): void {
   }
-  //method implemented by the interface
+  // method implemented by the interface
   setDisabledState?(isDisabled: boolean): void {
   }
 

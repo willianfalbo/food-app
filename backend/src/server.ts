@@ -1,58 +1,37 @@
-import * as jsonServer from "json-server";
-import * as path from "path";
-// import { Express } from "express"
+import * as jsonServer from 'json-server';
+import * as cors from 'cors';
 
-// import * as fs from "fs" // file system module
-// import * as https from "https"
-import { handleAuthentication } from "./auth";
-import { handleAuthorization } from "./authz";
-import { handleRegistration } from "./register";
+import * as config from './config';
+import { handleAuthentication } from './auth';
+import { handleAuthorization } from './authz';
+import { handleRegistration } from './register';
 
+// json-server uses express.js inside
 const server: any = jsonServer.create();
-const router: any = jsonServer.router(path.join("db.json"));
+
+const router: any = jsonServer.router(config.JSON_SERVER_DBPATH);
 const middlewares: any = jsonServer.defaults();
 
-// set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares);
 
-// to handle POST, PUT and PATCH you need to use a body-parser
-// you can use the one used by JSON Server
+// we can use bodyparser from json-server
 server.use(jsonServer.bodyParser);
 
-server.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+// enable all cors
+server.use(cors());
+
+server.post('/login', handleAuthentication);
+server.use('/orders', handleAuthorization);
+server.get('/users', (req, res, next) => {
+  return setTimeout(() => { next(); }, 400); // set delay
 });
 
-// middleware for login
-server.post("/login", handleAuthentication);
-// middlewares for orders
-server.use("/orders", handleAuthorization);
-
-server.get("/users", (req, res, next) => {
-  // set delay
-  return setTimeout(() => { next(); }, 400);
-});
-
-server.post("/users", handleRegistration);
+server.post('/users', handleRegistration);
 
 // use default router
 server.use(router);
 
-// const options = {
-//   cert: fs.readFileSync("./backend/keys/cert.pem"),
-//   key: fs.readFileSync("./backend/keys/key.pem")
-// }
-
-// "process.env.PORT" is only used when deployed to Azure
 const port: any = process.env.PORT || 3001;
-console.log("Process Env PORT:", port);
-
-// https.createServer(options, server).listen(3001, () => {
-//   console.log("JSON Server is running on https://localhost:3001")
-// })
-
 server.listen(port, () => {
-  console.log(`JSON Server is running on port ${port}`);
-})
+  console.log(`Json-Server is running on port ${port}`);
+});

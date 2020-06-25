@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
-import { Observable, from } from 'rxjs'
-import { switchMap, tap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators'
+import { from } from 'rxjs'
+import { switchMap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators'
 
 import { Restaurant } from './restaurant/restaurant.model';
 import { RestaurantsService } from './restaurant.service';
@@ -28,7 +28,7 @@ import { RestaurantsService } from './restaurant.service';
 })
 export class RestaurantsComponent implements OnInit {
 
-  searchBarState: string = 'hidden'
+  searchBarState = 'hidden'
   restaurants: Restaurant[]
 
   searchForm: FormGroup
@@ -44,11 +44,11 @@ export class RestaurantsComponent implements OnInit {
       searchControl: this.searchControl
     })
 
-    //create an event for value changes
+    // create an event for value changes
     this.searchControl.valueChanges
       .pipe(
-        debounceTime(500), //delays the values emitted within this time. If a new value arrives, the previous pending value is dropped.
-        distinctUntilChanged(), //ignore equal searchs after debounceTime
+        debounceTime(500), // delays the values emitted within this time. If a new value arrives, the previous pending value is dropped.
+        distinctUntilChanged(), // ignore equal searchs after debounceTime
         // .tap(searchTerm => console.log(`q=${searchTerm}`))
         switchMap(searchTerm =>
           this.restaurantsService
@@ -64,7 +64,7 @@ export class RestaurantsComponent implements OnInit {
   }
 
   toogleSearch() {
-    this.searchBarState = this.searchBarState == 'hidden' ? 'visible' : 'hidden'
+    this.searchBarState = this.searchBarState === 'hidden' ? 'visible' : 'hidden'
     this.iptSearch.nativeElement.focus()
   }
 

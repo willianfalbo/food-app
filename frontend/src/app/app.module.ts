@@ -4,10 +4,10 @@ import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { registerLocaleData } from '@angular/common';
-import localePt from '@angular/common/locales/pt' // from angular 5 "pt" is default "pt-BR"
+// import { registerLocaleData } from '@angular/common';
+// import localePt from '@angular/common/locales/pt' // from angular 5 "pt" is default "pt-BR"
 
-registerLocaleData(localePt, 'pt')
+// registerLocaleData(localePt, 'pt')
 
 // shared configurations
 import { ROUTES } from './app.routes';
@@ -57,7 +57,7 @@ import { EmailNotTakenValidatorDirective } from './security/register/email-not-t
       RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }) // to enable routes
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'pt' }, // to change currency format and so on
+    // { provide: LOCALE_ID, useValue: 'pt' }, // to change currency format and so on
     { provide: ErrorHandler, useClass: ApplicationErrorHandler },
     // to use "#" (hash) strategy after url domain. See https://codecraft.tv/courses/angular/routing/routing-strategies/
     // { provide: LocationStrategy, useClass: HashLocationStrategy },

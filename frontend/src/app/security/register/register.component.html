@@ -1,46 +1,44 @@
-      <!-- INÍCIO DO CONTEÚDO -->
       <section class="content register-content" style="margin: 2% auto">
   		  <div class="register-logo">
-  			     <b>FOOD APP</b> | Cadastro
+  			     <b>FOOD APP</b> | Register
   		  </div>
   		  <div class="col-xs-12 col-sm-offset-3 col-sm-6 register-box-body">
-        <p class="register-box-msg">Por favor, coloque os seus dados</p>
+        <p class="register-box-msg">Please, enter your details.</p>
   			<form [formGroup]="registerForm">
-          <mt-input-container errorMessage="Obrigatório e com 3 letras">
-            <input type="text" formControlName="name" class="form-control" placeholder="Primeiro Nome">
+          <mt-input-container errorMessage="Minimum 3 characters">
+            <input type="text" formControlName="name" class="form-control" placeholder="First Name">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </mt-input-container>
-          <div *ngIf="email.pending">Verificando...</div>
+          <div *ngIf="email.pending">Checking...</div>
           <!-- <span class="help-block has-error-block" *ngIf="email.errors?.emailTaken">
-            <i class="fa fa-remove"></i> E-mail já existe! Tente outro e-mail
+            <i class="fa fa-remove"></i> Email already exists! Please try again
           </span> -->
           <mt-input-container errorMessage="{{emailErrorMessage}}">
-            <input type="text" formControlName="email" class="form-control" placeholder="E-mail">
+            <input type="text" formControlName="email" class="form-control" placeholder="Email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </mt-input-container>
-          <mt-input-container errorMessage="Obrigatório e com 8 letras">
-            <input type="password" formControlName="password" class="form-control" placeholder="Senha">
+          <mt-input-container errorMessage="Minimum 8 characters">
+            <input type="password" formControlName="password" class="form-control" placeholder="Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </mt-input-container>
-          <mt-input-container errorMessage="Obrigatório e com 8 letras">
-            <input type="password" formControlName="passwordConfirmation" class="form-control" placeholder="Confirmação de Senha">
+          <mt-input-container errorMessage="Minimum 8 characters">
+            <input type="password" formControlName="passwordConfirmation" class="form-control" placeholder="Confirm Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </mt-input-container>
           <span class="help-block has-error-block" *ngIf="registerForm.hasError('passwordNotMatch')">
-            <i class="fa fa-remove"></i> Confirmação de senha incorreta!
+            <i class="fa fa-remove"></i> Password confirmation does not match!
           </span>
 
   			  <div class="row">
             <div class="col-xs col-xs-7">
-              <h4>Já tem uma conta? <a (click)="login()" style="cursor: pointer;">Faça Login</a></h4>
+              <h4>Already have an account? <a (click)="login()" style="cursor: pointer;">Sign in!</a></h4>
             </div>
             <!-- /.col -->
             <div class="col-xs-offset-1 col-xs-4">
-              <button type="submit" (click)="register()" [disabled]="registerForm.invalid" class="btn btn-primary btn-block btn-flat">Cadastrar</button>
+              <button type="submit" (click)="register()" [disabled]="registerForm.invalid" class="btn btn-primary btn-block btn-flat">Register</button>
             </div>
             <!-- /.col -->
   			  </div>
   			</form>
   		  </div>
 		  </section>
-      <!-- FIM DO CONTEÚDO -->

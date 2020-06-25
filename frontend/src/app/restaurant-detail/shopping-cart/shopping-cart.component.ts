@@ -27,7 +27,7 @@ import { MenuItem } from '../menu-item/menu-item.model';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  rowState: string = 'ready'
+  rowState = 'ready';
 
   constructor(private shoppingCartService: ShoppingCartService) { }
 
