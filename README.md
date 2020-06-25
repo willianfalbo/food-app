@@ -1,6 +1,6 @@
 ## Food App
 
-Simplified version of an online food delivery application. It was created for demonstration purpose only.
+A simplified version of an online food delivery application. It was created for demonstration purpose only.
 
 ### Features
 
