@@ -23,7 +23,7 @@
     "@angular/platform-server": "6.0.0",
     "@angular/router": "6.0.0",
     "admin-lte": "2.3.11",
-    "ajv": "6.0.0",
+    "ajv": "6.12.3",
     "core-js": "2.5.4",
     "font-awesome": "4.7.0",
     "intl": "1.2.5",
